@@ -4,13 +4,21 @@ const mysql = require("mysql2");
 const app = express();
 const PORT = process.env.PORT || 3333;
 const isProduction = process.env.PORT;
-const connectionString = "mysql://kyoslnhxriwjsi6p:b8r4f8sbj1w8t3pq@acw2033ndw0at1t7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pu18reymzbigidh6";
+// const connectionString = "mysql://kyoslnhxriwjsi6p:b8r4f8sbj1w8t3pq@acw2033ndw0at1t7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pu18reymzbigidh6";
+const cloudConnection = {
+  host: "acw2033ndw0at1t7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "kyoslnhxriwjsi6p",
+  password: "b8r4f8sbj1w8t3pq",
+  port: "3306",
+  database: "pu18reymzbigidh6",
+  multipleStatements: true
+};
 
-const connection = mysql.createConnection(isProduction ? connectionString : {
+const connection = mysql.createConnection(isProduction ? cloudConnection : {
   host: "127.0.0.1",
   user: "root",
   database: "books_db",
-  multipleStatements: "true"
+  multipleStatements: true
 });
 
 app.get("/", (clientReq, serverRes) => {

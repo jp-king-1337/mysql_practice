@@ -4,10 +4,9 @@ CREATE DATABASE books_db;
 USE books_db;
 
 CREATE TABLE biographies (
-    id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(250),
     author VARCHAR(250),
-    PRIMARY KEY(id)
 );
 
 INSERT INTO biographies (name, author) VALUES

@@ -6,10 +6,11 @@ USE books_db;
 CREATE TABLE biographies (
     id INT AUTO_INCREMENT,
     name VARCHAR(250),
+    author VARCHAR(250),
     PRIMARY KEY(id)
 );
 
-INSERT INTO biographies (name) VALUES
-    ("Titanic"),
-    ("Another"),
-    ("One More");
+INSERT INTO biographies (name, author) VALUES
+    ("Titanic", "JP"),
+    ("Another", "JP"),
+    ("One More", "JP");

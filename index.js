@@ -1,5 +1,5 @@
-const inquirer = require("inquirer");
 const mysql = require("mysql2");
+const inquirer = require("inquirer");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -7,35 +7,32 @@ const connection = mysql.createConnection({
   database: "books_db"
 });
 
-connection.query("SELECT * FROM biographies", (err, data) => {
-  if (err) return console.log(err);
+function printAllBios() {
+  connection.query("SELECT * FROM biographies", (err, data) => {
+    if (err) return console.log(err);
 
-  console.log(data);
-});
-
-function promptUser() {
-  inquirer
-    .prompt([
-      {
-        name: "title",
-        message: "Enter the title of a biography:",
-        validate: value => (value ? true : "Please enter the title of a biography.")
-      }
-    ])
-    .then(answers => {
-      const sql = `INSERT INTO biographies (name) VALUES ("${answers.title}")`;
-      connection.query(sql, (err, result) => {
-        if (err) return console.log(err);
-
-        connection.query("SELECT * FROM biographies", (err, data) => {
-          if (err) return console.log(err);
-
-          console.log("Biography added!");
-          console.log(data);
-          connection.end();
-        });
-      });
-    });
+    console.log(data);
+    connection.end();
+  });
 }
 
-promptUser();
+inquirer.prompt([
+  {
+    name: "title",
+    message: "Please provide a title for the biography."
+  },
+  {
+    name: "author",
+    message: "Please enter the author name."
+  }
+]).then((answerObj) => {
+  // Query our db and insert a new row into the biographies table
+  const sql = "INSERT INTO biographies (name, author) VALUES (?, ?)";
+
+  connection.query(sql, [answerObj.title, answerObj.author], (err, result) => {
+    if (err) return console.log(err);
+    console.log("New bio with id of %s added successfully!\n", result.insertId);
+
+    printAllBios();
+  });
+});

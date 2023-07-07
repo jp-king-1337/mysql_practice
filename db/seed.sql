@@ -34,7 +34,6 @@ CREATE TABLE projects (
 INSERT INTO projects (project_name, completed, student_id) VALUES
     -- Student 1 (John Doe)
     ("Clock Project", true, 1),
-    ("Clock Project Version 2.0", false, 1),
     ("Book Recommendation System", true, 1),
     ("E-commerce Website", false, 1),
     ("Music Streaming App", true, 1),
@@ -42,7 +41,6 @@ INSERT INTO projects (project_name, completed, student_id) VALUES
     -- Student 2 (Jane Smith)
     ("Calendar Application", false, 2),
     ("Clock Project Version 2.0", true, 2),
-    ("Social Media Analytics", false, 2),
     ("Food Delivery App", true, 2),
     ("Expense Tracker", false, 2),
 
@@ -51,7 +49,6 @@ INSERT INTO projects (project_name, completed, student_id) VALUES
     ("Fitness Tracking App", false, 3),
     ("Online Marketplace", true, 3),
     ("Task Management System", false, 3),
-    ("Weather Forecasting App", true, 3),
 
     -- Student 4 (Emily Davis)
     ("Food Delivery App", true, 4),
@@ -64,36 +61,29 @@ INSERT INTO projects (project_name, completed, student_id) VALUES
     ("E-commerce Website", false, 5),
     ("Music Streaming App", true, 5),
     ("Calendar Application", false, 5),
-    ("Clock Project Version 2.0", true, 5),
     ("Social Media Analytics", false, 5),
 
     -- Student 6 (Olivia Thompson)
     ("Music Streaming App", true, 6),
     ("Calendar Application", false, 6),
     ("Clock Project", true, 6),
-    ("Social Media Analytics", false, 6),
     ("Expense Tracker", true, 6),
 
     -- Student 7 (William Anderson)
     ("Chatbot Development", false, 7),
     ("Fitness Tracking App", true, 7),
     ("Online Marketplace", false, 7),
-    ("Task Management System", true, 7),
-    ("Weather Forecasting App", false, 7),
 
     -- Student 8 (Sophia Thomas)
     ("Book Recommendation System", true, 8),
     ("E-commerce Website", false, 8),
     ("Music Streaming App", true, 8),
-    ("Calendar Application", false, 8),
     ("Social Media Analytics", true, 8),
 
     -- Student 9 (James Roberts)
     ("Expense Tracker", false, 9),
-    ("Chatbot Development", true, 9),
     ("Fitness Tracking App", false, 9),
     ("Online Marketplace", true, 9),
-    ("Task Management System", false, 9),
 
     -- Student 10 (Ava Taylor)
     ("Weather Forecasting App", true, 10),

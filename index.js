@@ -51,5 +51,3 @@ app.get("/", (clientReq, serverRes) => {
 
 
 app.listen(PORT, () => console.log("Server started."));
-
-// Says main is up to date. It is not. Main has JD, heroku-deploy has JP.""

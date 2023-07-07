@@ -28,5 +28,15 @@ sequelize.sync()
   .then(() => {
     console.log("db has synced!");
 
-    Student.create();
+    Student.create({
+      first_name: "Jamil",
+      last_name: "Barrett"
+    }).then((newStudent) => {
+      console.log(newStudent);
+    })
+
+    Student.findAll()
+      .then(students => {
+        console.log(students);
+      });
   });

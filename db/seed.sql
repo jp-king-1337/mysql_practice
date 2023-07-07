@@ -11,24 +11,23 @@ CREATE TABLE students (
 );
 
 INSERT INTO students (first_name, last_name) VALUES
-  ("John", "Doe"),
-  ("Jane", "Smith"),
-  ("Michael", "Johnson"),
-  ("Emily", "Davis"),
-  ("Daniel", "Wilson"),
-  ("Olivia", "Thompson"),
-  ("William", "Anderson"),
-  ("Sophia", "Thomas"),
-  ("James", "Roberts"),
-  ("Ava", "Taylor");
-
+  ("Sophie", "Scholl"),
+  ("Hans", "Scholl"),
+  ("Alexander", "Schmorell"),
+  ("Christoph", "Probst"),
+  ("Willi", "Graf"),
+  ("Kurt", "Huber"),
+  ("Carl", "Friedrich Goerdeler"),
+  ("Marie", "Lange"),
+  ("Elisabeth", "Schumacher"),
+  ("Paul", "Reckzeh");
 
 CREATE TABLE projects (
   id INT AUTO_INCREMENT PRIMARY KEY,
   project_name VARCHAR(250) NOT NULL,
   completed BOOLEAN DEFAULT true,
   student_id INT NOT NULL,
-  FOREIGN KEY student_id REFERENCES students(id)
+  FOREIGN KEY (student_id) REFERENCES students(id)
     ON DELETE CASCADE
 );
 
@@ -102,3 +101,10 @@ INSERT INTO projects (project_name, completed, student_id) VALUES
     ("E-commerce Website", true, 10),
     ("Music Streaming App", false, 10),
     ("Calendar Application", true, 10);
+
+SELECT
+    CONCAT(first_name, " ", last_name) AS student_name,
+    project_name,
+    completed
+        FROM students
+        JOIN projects ON students.id = projects.student_id;

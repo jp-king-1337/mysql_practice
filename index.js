@@ -1,27 +1,27 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const sequelize = new Sequelize("student_app_db", "root", "", {
   host: "localhost",
   dialect: "mysql"
 });
 
-class User extends Model { }
+class Student extends Model { }
 
-User.init({
+Student.init({
   // Model attributes are defined here
-  firstName: {
+  first_name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
+  last_name: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 }, {
   // Other model options go here
-  sequelize, // We need to pass the connection instance
-  modelName: 'User' // We need to choose the model name
+  sequelize: sequelize,
+  modelName: "student" // We need to choose the model name
 });
 
-// the defined model is the class itself
-console.log(User === sequelize.models.User); // true
+
+sequelize.sync();

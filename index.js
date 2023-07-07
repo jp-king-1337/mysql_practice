@@ -24,4 +24,9 @@ Student.init({
 });
 
 
-sequelize.sync();
+sequelize.sync()
+  .then(() => {
+    console.log("db has synced!");
+
+    Student.create();
+  });

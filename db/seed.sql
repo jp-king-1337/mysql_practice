@@ -96,5 +96,5 @@ SELECT
     CONCAT(first_name, " ", last_name) AS student_name,
     project_name,
     completed
-    FROM students
-    JOIN projects ON students.id = projects.student_id;
+        FROM students
+        JOIN projects ON s.id = p.student_id;

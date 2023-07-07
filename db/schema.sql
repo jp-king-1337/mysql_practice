@@ -13,5 +13,3 @@ INSERT INTO biographies (name, author) VALUES
     ("Titanic", "JP"),
     ("Another", "JP"),
     ("One More", "JP");
-
-    -- I need a change that will allow me to commit to GitHub.

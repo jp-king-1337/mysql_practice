@@ -97,4 +97,4 @@ SELECT
     project_name,
     completed
         FROM students
-        JOIN projects ON s.id = p.student_id;
+        JOIN projects ON students.id = projects.student_id;

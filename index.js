@@ -1,42 +1,59 @@
-const { Sequelize, DataTypes, Model } = require("sequelize");
+const express = require('express');
+const mysql = require('mysql2');
 
-const sequelize = new Sequelize("student_app_db", "root", "", {
-  host: "localhost",
-  dialect: "mysql"
+const app = express();
+const PORT = process.env.PORT || 3333;
+
+const isProduction = process.env.PORT;
+
+const cloudConnection = {
+  host: 'uzb4o9e2oe257glt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  user: 'ti3an634a6rwkaha',
+  password: 'wlyr6sfhsoa3u4f7',
+  database: 'jlepkhxiycgsz5i2',
+  multipleStatements: true
+};
+
+const connection = mysql.createConnection(isProduction ? cloudConnection : {
+  host: 'localhost',
+  user: 'root',
+  database: 'books_db',
+  multipleStatements: true
 });
 
-class Student extends Model { }
+app.get('/', (clientReq, serverRes) => {
+  const tableSQL = `
+  DROP TABLE IF EXISTS biographies;
 
-Student.init({
-  // Model attributes are defined here
-  first_name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  last_name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
-  // Other model options go here
-  sequelize: sequelize,
-  modelName: "student" // We need to choose the model name
-});
+  CREATE TABLE biographies (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(250),
+    author VARCHAR(250),
+    PRIMARY KEY(id)
+  );
 
+  INSERT INTO biographies (name, author) VALUES 
+    ('Titanic', 'JD'),
+    ('Another', 'JD'),
+    ('One More', 'JD');
+  `;
 
-sequelize.sync()
-  .then(() => {
-    console.log("db has synced!");
+  connection.query(tableSQL, (err) => {
+    if (err) throw err;
 
-    Student.create({
-      first_name: "Jamil",
-      last_name: "Barrett"
-    }).then((newStudent) => {
-      console.log(newStudent);
-    })
+    connection.query('SELECT * FROM biographies', (err, data) => {
+      if (err) return console.log(err);
 
-    Student.findAll()
-      .then(students => {
-        console.log(students);
-      });
+      serverRes.send(data);
+    });
   });
+});
+
+app.listen(PORT, () => console.log('Server started...'));
+
+
+
+
+
+
+

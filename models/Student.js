@@ -1,7 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const db = require("../db/connection");
 
-
 // Create our Student model and extend the Model constructor
 class Student extends Model { }
 
@@ -31,3 +30,5 @@ Student.init({
     sequelize: db,
     modelName: "student"
 });
+
+module.exports = Student;

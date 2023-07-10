@@ -1,8 +1,30 @@
-/* body {
-    background-image: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2022/03/Obi-Wan-Kenobi-Hello-There.jpg");
-    background-color: #cccccc;
-    height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
+:root {
+    --myPurple: #301934;
+  }
+
+body {
+    padding: 5%;;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 6px 10px;
+    color: var(--myPurple);
+    border: 1px solid var(--myPurple);
+    border-radius: 3px;
+}
+
+nav a:not(:last-child) {
+    margin-right: 15px;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: var(--myPurple);
+    color: #fff;
+}

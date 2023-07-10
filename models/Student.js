@@ -28,5 +28,6 @@ Student.init({
         }
     }
 }, {
-    sequelize: db
+    sequelize: db,
+    modelName: "student"
 });

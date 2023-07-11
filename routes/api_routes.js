@@ -16,8 +16,38 @@ router.post("/api/group", (clientReq, serverRes) => {
             message: err.message,
             error: true
         }),
-        console.log(err.message);
+            console.log(err.message);
     })
+});
+
+// Get all groups
+router.get("/api/groups", (clientReq, serverRes) => {
+    // Retrieve all groups from the db
+    Group.findAll()
+        .then(groups => {
+            serverRes.send(groups);
+        });
+});
+
+// Create Student
+router.post("/api/student", (clientReq, serverRes) => {
+    Student.create(clientReq.body)
+        .then(() => serverRes.send("Student added successfully!"));
+
+    // Get the group first by id
+    // Group.findByPk(clientReq.body.group_id)
+    //     .then(group => {
+    //         Student.create({
+    //             first_name: clientReq.body.first_name,
+    //             last_name: clientReq.body.last_name,
+    //             email: clientReq.body.email
+    //         }).then(student => {
+    //             group.addStudent(student)
+    //                 .then(() => {
+    //                     serverRes.send("Student added successfully");
+    //                 });
+    //         })
+    //     })
 });
 
 module.exports = router;

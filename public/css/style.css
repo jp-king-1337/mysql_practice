@@ -1,9 +1,10 @@
 :root {
     --myPurple: #301934;
-  }
+}
 
 body {
-    padding: 5%;;
+    padding: 5%;
+    ;
 }
 
 nav {
@@ -27,4 +28,15 @@ nav a:hover,
 nav a.active {
     background-color: var(--myPurple);
     color: #fff;
+}
+
+form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+form>* {
+    padding: 7px 10px;
+    margin: 3px 0;
 }

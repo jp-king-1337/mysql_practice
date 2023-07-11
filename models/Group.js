@@ -12,7 +12,7 @@ Group.init({
         allowNull: false,
         unique: {
             args: true,
-            msg: "Group already exists!"
+            msg: "That group name is already in use. Please pick a new name."
         },
         validate: {
             min: 2

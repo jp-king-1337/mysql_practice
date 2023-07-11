@@ -1,10 +1,17 @@
 :root {
     --myPurple: #301934;
+    --white: #fff;
 }
 
 body {
     padding: 5%;
     ;
+}
+
+button {
+    background-color: var(--myPurple);
+    color: var(--white);
+    border-radius: 5px;
 }
 
 nav {
@@ -27,7 +34,7 @@ nav a:not(:last-child) {
 nav a:hover,
 nav a.active {
     background-color: var(--myPurple);
-    color: #fff;
+    color: var(--white);
 }
 
 form {

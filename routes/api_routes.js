@@ -24,7 +24,11 @@ router.post("/api/group", (clientReq, serverRes) => {
 router.get("/api/groups", (clientReq, serverRes) => {
     // Retrieve all groups from the db
     Group.findAll({
-        include: Student
+        include: {
+            model: Student,
+            separate: true,
+            order: [["first_name", "asc"]]
+        }
     }).then(groups => {
         serverRes.send(groups);
     });

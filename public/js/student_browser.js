@@ -31,7 +31,6 @@ function getGroups() {
         .then(res => res.json())
         .then(data => {
             if (!data.length) return window.location = "/group";
-            console.log(data);
             data.forEach(groupObj => {
                 groupSelect.insertAdjacentHTML("beforeend",
                 `<option value="${groupObj.id}">${groupObj.name}</option>`

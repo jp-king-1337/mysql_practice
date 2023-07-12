@@ -1,14 +1,14 @@
-const groupForm = document.querySelector('#group-form');
+const groupForm = document.querySelector("#group-form");
 
 function handleGroupSubmit(event) {
     event.preventDefault();
 
-    const nameInput = document.querySelector('#group-name-input');
+    const nameInput = document.querySelector("#group-name-input");
 
-    fetch('/api/group', {
-        method: 'POST',
+    fetch("/api/group", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             name: nameInput.value
@@ -19,8 +19,8 @@ function handleGroupSubmit(event) {
             if (res.error) return alert(res.message);
 
             alert(res.message);
-            nameInput.value = '';
+            nameInput.value = "";
         });
 }
 
-groupForm.addEventListener('submit', handleGroupSubmit);
+groupForm.addEventListener("submit", handleGroupSubmit);

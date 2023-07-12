@@ -16,8 +16,8 @@ app.use(express.static('public')); // Allows the client/browser to access any fo
 
 // Setup Handlebars Template Engine
 app.engine('handlebars', engine({
-  // layout directory that allows you to avoid repeated html code
-  layoutsDir: './views/layouts'
+    // layout directory that allows you to avoid repeated html code
+    layoutsDir: './views/layouts'
 }));
 app.set('view engine', 'handlebars');
 app.set('views', './views');
@@ -27,7 +27,7 @@ app.use('/', [api_routes, view_routes]);
 
 // Connect to the db and create all tables based off of our models
 db.sync({ force: false })
-  .then(() => {
-    // Start server
-    app.listen(PORT, () => console.log('Server started on port %s', PORT));
-  });
+    .then(() => {
+        // Start server
+        app.listen(PORT, () => console.log('Server started on port %s', PORT));
+    });

@@ -4,21 +4,21 @@ const db = require('../db/connection');
 class User extends Model { }
 
 User.init({
-  email: {
-    type: DataTypes.STRING,
-    validate: {
-      isEmail: true
+    email: {
+        type: DataTypes.STRING,
+        validate: {
+            isEmail: true
+        }
+    },
+    password: {
+        type: DataTypes.STRING,
+        validate: {
+            min: 6
+        }
     }
-  },
-  password: {
-    type: DataTypes.STRING,
-    validate: {
-      min: 6
-    }
-  }
 }, {
-  sequelize: db,
-  modelName: 'user'
+    sequelize: db,
+    modelName: 'user'
 });
 
 module.exports = User;

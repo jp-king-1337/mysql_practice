@@ -1,6 +1,14 @@
 <h1>Home Page</h1>
 
-<p>{{username}}</p>
+{{#if loggedIn}}
+    <p>{{username}}</p>
+{{/if}}
+
+<ul>
+    {{#each fruits}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
 
 <ul>
     <li>John Smith</li>

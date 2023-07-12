@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS student_app_db;
+DROP DATABASE IF EXISTS user_app_example;
 
-CREATE DATABASE student_app_db;
+CREATE DATABASE user_app_example;

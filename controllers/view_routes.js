@@ -1,28 +1,22 @@
 const router = require("express").Router();
-const path = require("path");
 
+// Show Homepage
 router.get("/", (req, res) => {
     res.render("index", {
-        isHome: true,
-        users: [
-            {
-                email: "jd@test.com"
-            },
-            {
-                email: "bob@test.com"
-            },
-            {
-                email: "jane@test.com"
-            }
-        ]
+        isHome: true
     });
 });
 
-// Sends the layout and all its dynamic values
+// Show Register Page
 router.get("/register", (req, res) => {
     res.render("register", {
         isRegister: true
     });
-})
+});
+
+// Show Dashboard Page
+router.get("/dashboard", (req, res) => {
+    res.render("dashboard");
+});
 
 module.exports = router;

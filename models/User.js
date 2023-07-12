@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const { hash, compare } = require("bcrypt");
 const db = require("../db/connection");
 
 class User extends Model { }
@@ -7,6 +8,7 @@ User.init({
     email: {
         type: DataTypes.STRING,
         unique: true,
+        allowNull: false,
         validate: {
             isEmail: true
         }

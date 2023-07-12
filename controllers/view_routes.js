@@ -3,6 +3,7 @@ const path = require("path");
 
 router.get("/", (req, res) => {
     res.render("index", {
+        isHome: true,
         users: [
             {
                 email: "jd@test.com"
@@ -17,8 +18,11 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/about", (req, res) => {
-    res.render("about");
+// Sends the layout and all its dynamic values
+router.get("/register", (req, res) => {
+    res.render("register", {
+        isRegister: true
+    });
 })
 
 module.exports = router;

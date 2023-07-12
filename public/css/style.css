@@ -5,13 +5,18 @@
 
 body {
     padding: 5%;
-    ;
 }
 
 button {
     background-color: var(--myPurple);
     color: var(--white);
     border-radius: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav {
@@ -38,12 +43,20 @@ nav a.active {
 }
 
 form {
+    background-color: #30193475;
     width: 400px;
+    margin: 20px auto;
+    padding: 5px;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 form>* {
     padding: 7px 10px;
     margin: 3px 0;
+}
+
+form h1 {
+    text-align: center;
 }

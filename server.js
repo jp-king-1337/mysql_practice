@@ -35,7 +35,7 @@ app.set("view engine", "hbs");
 app.set("views", "./views");
 
 // Load Sessions
-api_routes.use(session({
+app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,

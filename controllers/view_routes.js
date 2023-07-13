@@ -46,17 +46,18 @@ router.get("/register", (req, res) => {
 
 // Show Dashboard Page
 router.get("/dashboard", isAuthenticated, async (req, res) => {
+
     const user = await User.findByPk(req.session.user_id, {
         include: Thought
     });
 
-    const thoughts = user.thoughts.map(ts => ts.get({ plain: true }));
+    const thoughts = user.thoughts.map(t => t.get({ plain: true }));
 
     // The user IS logged in
     res.render("dashboard", {
         isDashboard: true,
         email: user.email,
-        thoughts: user.thoughts
+        thoughts: thoughts
     });
 });
 

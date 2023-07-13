@@ -37,13 +37,9 @@ nav a:not(:last-child) {
     margin-right: 15px;
 }
 
+nav a.active,
 nav a:hover {
     background-color: var(--myPurple);
-    color: var(--white);
-}
-
-nav a.active {
-    background-color: #301934e0;
     color: var(--white);
 }
 
@@ -64,4 +60,9 @@ form>* {
 
 form h1 {
     text-align: center;
+}
+
+form button {
+    width: fit-content;
+    align-self: center;
 }

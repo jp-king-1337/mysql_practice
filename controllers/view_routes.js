@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const Thought = require("../models/Thought");
 
 // Custom Middleware
 function isAuthenticated(req, res, next) {
@@ -11,10 +12,17 @@ function isAuthenticated(req, res, next) {
 }
 
 // Show Homepage
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    let thoughts = await Thought.findAll({
+        include: User
+    });
+
+    thoughts = thoughts.map(t => t.get({ plain: true }));
+
     res.render("index", {
         isHome: true,
-        isLoggedIn: req.session.user_id
+        isLoggedIn: req.session.user_id,
+        thoughts: thoughts
     });
 });
 
@@ -38,11 +46,17 @@ router.get("/register", (req, res) => {
 
 // Show Dashboard Page
 router.get("/dashboard", isAuthenticated, async (req, res) => {
-    const user = await User.findByPk(req.session.user_id);
+    const user = await User.findByPk(req.session.user_id, {
+        include: Thought
+    });
+
+    const thoughts = user.thoughts.map(ts => ts.get({ plain: true }));
+
     // The user IS logged in
     res.render("dashboard", {
         isDashboard: true,
-        email: user.email
+        email: user.email,
+        thoughts: user.thoughts
     });
 });
 

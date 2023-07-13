@@ -76,3 +76,11 @@ form button {
     width: fit-content;
     align-self: center;
 }
+
+ul li {
+    margin: 10px 0;
+}
+
+ul li p {
+    margin: 4px;
+}

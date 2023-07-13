@@ -3,6 +3,8 @@ const { Sequelize } = require("sequelize");
 const isProduction = process.env.JAWSDB_URL;
 let sequelize;
 
+// Trying heroku again
+
 if (isProduction)
     sequelize = new Sequelize(process.env.JAWSDB_URL, {
         dialect: "mysql"

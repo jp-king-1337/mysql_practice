@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const express = require("express");
 const { engine } = require("express-handlebars");
 // Import our db connection
@@ -26,6 +28,15 @@ app.engine("hbs", engine({
 }));
 app.set("view engine", "hbs");
 app.set("views", "./views");
+
+// Load Sessions
+api_routes.use(session({
+    secret: process.nextTick.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    // cookie: { secure: true } // Won't work for localhost because it's not https
+    cookie: { httpOnly: true }
+}));
 
 // Load Routes
 app.use("/", [api_routes, view_routes, user_routes]);

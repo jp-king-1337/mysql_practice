@@ -7,6 +7,13 @@ router.get("/", (req, res) => {
     });
 });
 
+// Show Login Page
+router.get("/login", (req, res) => {
+    res.render("login", {
+        isLogin: true
+    });
+});
+
 // Show Register Page
 router.get("/register", (req, res) => {
     res.render("register", {

@@ -38,7 +38,13 @@ User.init({
 
             user.password = hashPassword;
         }
-    }
+    },
 });
+
+User.prototype.validatePass = async function(formPassword) {
+    const isValid = await compare(formPassword, this.password);
+
+    return isValid;
+}
 
 module.exports = User;

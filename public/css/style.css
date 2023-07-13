@@ -1,5 +1,6 @@
 :root {
     --myPurple: #301934;
+    --myPurpleLight: #30193475;
     --white: #fff;
 }
 
@@ -36,9 +37,13 @@ nav a:not(:last-child) {
     margin-right: 15px;
 }
 
-nav a:hover,
-nav a.active {
+nav a:hover {
     background-color: var(--myPurple);
+    color: var(--white);
+}
+
+nav a.active {
+    background-color: #301934e0;
     color: var(--white);
 }
 

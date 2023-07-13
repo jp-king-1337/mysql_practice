@@ -2,6 +2,10 @@ require("dotenv").config()
 
 const express = require("express");
 const { engine } = require("express-handlebars");
+
+// Import session
+const session = require("express-session");
+
 // Import our db connection
 const db = require("./db/connection");
 
@@ -31,10 +35,10 @@ app.set("views", "./views");
 
 // Load Sessions
 api_routes.use(session({
-    secret: process.nextTick.SECRET_KEY,
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    // cookie: { secure: true } // Won't work for localhost because it's not https
+    // cookie: { secure: true } // Won't work for localhost because localhost is not https
     cookie: { httpOnly: true }
 }));
 

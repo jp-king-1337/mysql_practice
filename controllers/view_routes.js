@@ -16,6 +16,7 @@ router.get("/register", (req, res) => {
 
 // Show Dashboard Page
 router.get("/dashboard", (req, res) => {
+    console.log(req.session);
     res.render("dashboard");
 });
 

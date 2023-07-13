@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const User = require("../models/User");
 
 // Custom Middleware
 function isAuthenticated(req, res, next) {
@@ -12,12 +13,15 @@ function isAuthenticated(req, res, next) {
 // Show Homepage
 router.get("/", (req, res) => {
     res.render("index", {
-        isHome: true
+        isHome: true,
+        isLoggedIn: req.session.user_id
     });
 });
 
 // Show Login Page
 router.get("/login", (req, res) => {
+    if (req.session.user_id) return res.redirect("/dashboard");
+
     res.render("login", {
         isLogin: true
     });
@@ -25,16 +29,21 @@ router.get("/login", (req, res) => {
 
 // Show Register Page
 router.get("/register", (req, res) => {
+    if (req.session.user_id) return res.redirect("/dashboard");
+
     res.render("register", {
         isRegister: true
     });
 });
 
 // Show Dashboard Page
-router.get("/dashboard", isAuthenticated, (req, res) => {
-
-
-    res.redirect("/login");
+router.get("/dashboard", isAuthenticated, async (req, res) => {
+    const user = await User.findByPk(req.session.user_id);
+    // The user IS logged in
+    res.render("dashboard", {
+        isDashboard: true,
+        email: user.email
+    });
 });
 
 module.exports = router;

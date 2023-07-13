@@ -39,6 +39,7 @@ router.post("/register", async (req, res) => {
     try {
         const newUser = await User.create(req.body);
 
+        // Creates a session and sends a cookie to the client
         req.session_user_id = newUser.id;
 
         res.redirect("/dashboard");

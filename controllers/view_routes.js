@@ -1,5 +1,14 @@
 const router = require("express").Router();
 
+// Custom Middleware
+function isAuthenticated(req, res, next) {
+    const isAuthenticated = req.session.user_id;
+
+    if (!isAuthenticated) return res.redirect("/login");
+
+    next();
+}
+
 // Show Homepage
 router.get("/", (req, res) => {
     res.render("index", {
@@ -22,9 +31,10 @@ router.get("/register", (req, res) => {
 });
 
 // Show Dashboard Page
-router.get("/dashboard", (req, res) => {
-    console.log(req.session);
-    res.render("dashboard");
+router.get("/dashboard", isAuthenticated, (req, res) => {
+
+
+    res.redirect("/login");
 });
 
 module.exports = router;

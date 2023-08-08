@@ -9,7 +9,7 @@ if (isProduction) {
     });
 } else {
     sequelize = new Sequelize("user_app_example", "root", "", {
-        host: "localhost",
+        host: "127.0.0.1",
         dialect: "mysql"
     });
 }
